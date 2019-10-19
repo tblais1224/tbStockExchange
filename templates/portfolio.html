@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Portfolio
+{% endblock %}
+
+{% block main %}
+
+{% if shares_param%}
+<div class="alert">
+    <p>You have successfully {{action_param}} {{shares_param}} shares of {{symbol_param}} at {{price_param | usd}} a share for {{cost_param | usd}}.</p>
+</div>
+{% endif %}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price ($)</th>
+            <th scope="col">Total ($)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in data %}
+        <tr>
+            <td> {{ stock[0] }} </td>
+            <td> {{ stock[1] }} </td>
+            <td> {{ stock[2] }} </td>
+            <td> {{ stock[3] | usd }} </td>
+            <td> {{ stock[4] | usd }} </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> {{ net_total | usd }} </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

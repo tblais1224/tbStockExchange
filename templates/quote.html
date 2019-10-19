@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Quote
+{% endblock %}
+
+{% block main %}
+{% if data == "GET" %}
+<form action="/quote" method="post">
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Quote</button>
+</form>
+{% endif %}
+{% if data != "GET" %}
+<div class="form-group">
+    <h3>{{data}}</h3>
+</div>
+{% endif %}
+{% endblock %}
