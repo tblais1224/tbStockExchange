@@ -1,7 +1,6 @@
 import os
 
 import requests
-from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, make_response, render_template, request, session
 from flask_mysqldb import MySQL
 from flask_session import Session
@@ -16,10 +15,6 @@ app = Flask(__name__)
 # export API_KEY=value
 
 # Ensure templates are auto-reloaded
-app.config["TEMPLATES_AUTO_RELOAD"] = True
-app.config["TEMPLATES_AUTO_RELOAD"] = True
-app.config["TEMPLATES_AUTO_RELOAD"] = True
-app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Ensure responses aren't cached
@@ -40,7 +35,11 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-# Configure CS50 Library to use SQLite database
+# Configure mysql
+app.config["MYSQL_HOST"] = "localhost"
+app.config["MYSQL_USER"] = "root"
+app.config["MYSQL_PASSWORD"] = "12allstar12"
+app.config["MYSQL_DB"] = "financepy"
 db = MySQL(app)
 
 # Make sure API key is set
